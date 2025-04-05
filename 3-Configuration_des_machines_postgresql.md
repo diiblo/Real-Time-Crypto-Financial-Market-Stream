@@ -45,7 +45,14 @@ Dans chaque conteneur (maître et esclaves), configurez Spark pour qu'il puisse 
    /usr/local/spark/sbin/./start-worker.sh pyspark-master:7077
    ```
 
-   Répétez pour `spark-worker2`.
+   Répétez pour `spark-worker2` :
+    ```bash
+   docker exec -u root -it spark-worker2 bash
+   ```
+
+   ```bash
+   /usr/local/spark/sbin/./start-worker.sh pyspark-master:7077
+   ```
 
 ---
 
