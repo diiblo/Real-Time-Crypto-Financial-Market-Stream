@@ -1,14 +1,13 @@
-from kafka import KafkaProducer
-import json
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from utils.kafka_utils import create_producer
 import time
 import requests
 import builtins  # pour éviter le conflit avec round() de PySpark
 
 # Initialisation du Kafka Producer
-producer = KafkaProducer(
-    bootstrap_servers=['kafka:29092'],
-    value_serializer=lambda v: json.dumps(v).encode('utf-8')
-)
+producer = create_producer()
 
 cryptos = ['BTC', 'ETH', 'BNB']
 API_URL = "https://min-api.cryptocompare.com/data/price"
